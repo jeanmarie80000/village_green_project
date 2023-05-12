@@ -4,6 +4,8 @@
 
 {% block body %}
 
+    <a href='{{ path('product.new') }}' class="btn btn-primary">Create</a>
+
     <div class="d-flex justify-content-center">
         <h2 class="m-3 ml-0">Produits</h2>
     </div>
@@ -24,12 +26,14 @@
                                     <h4 class="card-title">{{ product.name }}</h5>
                                     <p class="card-text">{{ product.label }}</p>
                                     <p>{{ product.pricePt }} €</p>
+                                    {# <a href="{{ path('product.edit')}}" class="btn btn-warning">Modifier</a> #}
                                 </div>    
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
+
 
             </div>
         </div>

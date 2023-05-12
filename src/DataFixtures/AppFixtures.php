@@ -16,22 +16,21 @@ class AppFixtures extends Fixture
             $chara = '0123456789abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charaLenght = strlen($chara);
             $randomString = '';
-            for ($i=0; $i < $lenght; $i++) { 
-                $randomString = $chara[random_int(0, $charaLenght - 1 )];
+            for ($i = 0; $i < $lenght; $i++) { 
+                $randomString = $chara[random_int(0, $charaLenght - 1)];
             }
             return $randomString;
         }
 
-        for ($i=1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
 
             $product = new Product();
             $product->setId($i)
                 ->setName('product # '.$i)
                 ->setLabel(generateText())
                 ->setDescri(generateText())
-                ->setDateCreate(new \DateTime('06/06/2010'))
+                ->setDateCreate(new \DateTime('now'))
                 ->setPricePt(mt_rand(0,100));
-    
     
             $manager->persist($product);
     
