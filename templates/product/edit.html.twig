@@ -1,9 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <h2 class="mt-4">Modification d'un produit</h2>
-    
-    {{ form(form) }}
-</div>
+    {{ form_start(form) }}
+        <div class="container">
+            <h2 class="mt-4">Modification d'un produit</h2>
+            
+            <div class="form_group">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                <div class="form-error">
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+
+            <div class="form_group">
+                    {{ form_label(form.label) }}
+                    {{ form_widget(form.label) }}
+                <div class="form-error">
+                    {{ form_errors(form.label) }}
+                </div>
+            </div>
+
+            <div class="form_group">
+                    {{ form_label(form.descri) }}
+                    {{ form_widget(form.descri) }}
+                <div class="form-error">
+                    {{ form_errors(form.descri) }}
+                </div>
+            </div>
+
+            <div class="form_group">
+                    {{ form_label(form.price_pt) }}
+                    {{ form_widget(form.price_pt) }}
+                <div class="form-error">
+                    {{ form_errors(form.price_pt) }}
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
 {% endblock %}

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Config\Doctrine\Orm\EntityManagerConfig;
 
 class ProductController extends AbstractController
 {
@@ -68,14 +69,58 @@ class ProductController extends AbstractController
 
     }
 
-    #[Route('product/edit/{id}', name: 'product.edit', methods:['GET', 'POST'])]
-    public function edit(ProductRepository $repository, int $id): Response
-    {
-        $product = $repository->findOneBy(['id' => $id]);
-        $form = $this->createForm(ProductType::class, $product);
 
-        return $this->renderForm('product/edit.html.twig', [
+    /**
+     * Edit controller
+     */
+    #[Route('product/edit/{id}', name: 'product.edit', methods:['GET', 'POST'])]
+    public function edit(
+        Product $product,
+        Request $request,
+        EntityManagerInterface $manager
+        ): Response
+    {
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $product = $form->getData();
+
+            $manager->persist($product);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre produit a été modifié.'
+            );
+
+            return $this->redirectToRoute('app_product');
+        } else {
+            return $this->renderForm('product/edit.html.twig', [
             'form' => $form
         ]);
+        }
     }
+
+    #[Route('product/delete/{id}', name: 'product.delete', methods: ['GET'])]
+    public function delete(EntityManagerInterface $manager, Product $product): Response
+    {
+        if(!$product) {
+            $this->addFlash(
+                '',
+                'Le produit n\'a pas été trouvé.'
+            );
+        }
+        $manager->remove($product);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Le produit a été supprimé'
+        );
+
+        return $this->redirectToRoute('app_product');
+    }
+
+
 }

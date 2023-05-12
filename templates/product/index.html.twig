@@ -26,8 +26,9 @@
                                     <h4 class="card-title">{{ product.name }}</h5>
                                     <p class="card-text">{{ product.label }}</p>
                                     <p>{{ product.pricePt }} €</p>
-                                    {# <a href="{{ path('product.edit')}}" class="btn btn-warning">Modifier</a> #}
-                                </div>    
+                                    <a href="{{ path('product.edit', { id : product.id }) }}" class="btn btn-warning">Modifier</a>
+                                    <a href='{{ path('product.delete', { id : product.id }) }}' class="btn btn-danger">Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
