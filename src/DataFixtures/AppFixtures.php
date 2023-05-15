@@ -42,8 +42,8 @@ class AppFixtures extends Fixture
         for ($i = 1; $i <= 15; $i++) {
 
             $product = new Rubrique();
-            $product->setCodeRubrique('Rubrique # '.$i)
-                ->setNomRubrique(generateText());
+            $product->setNomRubrique('Rubrique # '.$i)
+                ->setCodeRubrique(generateText());
     
             $manager->persist($product);
     
@@ -53,8 +53,8 @@ class AppFixtures extends Fixture
         for ($i = 1; $i <= 15; $i++) {
 
             $product = new Sousrubrique();
-            $product->setCodeSousrubrique('Sous-rubrique # '.$i)
-                ->setNomSousrubrique(generateText());
+            $product->setNomSousrubrique('Sous-rubrique # '.$i)
+                ->setCodeSousrubrique(generateText());
     
             $manager->persist($product);
     
