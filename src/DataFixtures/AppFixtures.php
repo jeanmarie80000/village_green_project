@@ -3,8 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Product;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Rubrique;
+use App\Entity\Sousrubrique;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class AppFixtures extends Fixture
 {
@@ -36,5 +38,28 @@ class AppFixtures extends Fixture
     
             $manager->flush();
         }
+
+        for ($i = 1; $i <= 15; $i++) {
+
+            $product = new Rubrique();
+            $product->setCodeRubrique('Rubrique # '.$i)
+                ->setNomRubrique(generateText());
+    
+            $manager->persist($product);
+    
+            $manager->flush();
+        }
+
+        for ($i = 1; $i <= 15; $i++) {
+
+            $product = new Sousrubrique();
+            $product->setCodeSousrubrique('Sous-rubrique # '.$i)
+                ->setNomSousrubrique(generateText());
+    
+            $manager->persist($product);
+    
+            $manager->flush();
+        }
+
     }
 }
