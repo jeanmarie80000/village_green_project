@@ -33,6 +33,10 @@ class Product
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $price_pt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Sousrubrique $sousrubrique = null;
+
 
     public function getId(): ?int
     {
@@ -102,6 +106,18 @@ class Product
     public function setDateCreate(\DateTimeInterface $date_create): self
     {
         $this->date_create = $date_create;
+
+        return $this;
+    }
+
+    public function getSousrubrique(): ?Sousrubrique
+    {
+        return $this->sousrubrique;
+    }
+
+    public function setSousrubrique(?Sousrubrique $sousrubrique): self
+    {
+        $this->sousrubrique = $sousrubrique;
 
         return $this;
     }

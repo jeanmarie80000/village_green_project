@@ -13,7 +13,7 @@
 
             {% for rubriques in rubrique %}
                 <div class="col-4">
-                    <a href="{{ path('app_sousrubrique')}}" class="card m-2">
+                    <a href="{{ path('app_sousrubriqueId', {rubrique: rubriques.id}) }}" class="card m-2">
                         <div>
                             <img src="{{ asset('upload/product/600x350.jpeg') }}" class="img-fluid" alt="img_test">
                             <h4 class="d-flex card-title justify-content-center">{{ rubriques.NomRubrique }}</h4>

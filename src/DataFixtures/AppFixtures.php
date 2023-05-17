@@ -7,10 +7,10 @@ use App\Entity\Rubrique;
 use App\Entity\Sousrubrique;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\ORM\Mapping\Id;
 
 class AppFixtures extends Fixture
 {
-
     public function load(ObjectManager $manager): void
     {
 
@@ -24,42 +24,49 @@ class AppFixtures extends Fixture
             return $randomString;
         }
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
 
-            $product = new Product();
-            $product->setId($i)
-                ->setName('product # '.$i)
-                ->setLabel(generateText())
-                ->setDescri(generateText())
-                ->setDateCreate(new \DateTime('now'))
-                ->setPricePt(mt_rand(0,100));
-    
-            $manager->persist($product);
-    
-            $manager->flush();
-        }
-
-        for ($i = 1; $i <= 15; $i++) {
-
-            $product = new Rubrique();
-            $product->setNomRubrique('Rubrique # '.$i)
+            $rubrique = new Rubrique();
+            $rubrique->setNomRubrique('Rubrique # '.$i)
                 ->setCodeRubrique(generateText());
     
-            $manager->persist($product);
+            $manager->persist($rubrique);
     
             $manager->flush();
+
+            for ($j = 1; $j <= 15; $j++) {
+
+                $sousrubrique = new Sousrubrique();
+                $sousrubrique->setNomSousrubrique('Sous-rubrique # '.$i . '-' .$j)
+                    ->setCodeSousrubrique(generateText())
+                    ->setRubrique($rubrique);
+        
+                $manager->persist($sousrubrique);
+        
+                $manager->flush();
+
+                for ($k = 1; $k <= 10; $k++) {
+
+                    $product = new Product();
+                    $product
+                        ->setName('product # '.$i . '-' .$j. '-' .$k)
+                        ->setLabel(generateText())
+                        ->setDescri(generateText())
+                        ->setDateCreate(new \DateTime('now'))
+                        ->setPricePt(mt_rand(0,100))
+                        ->setSousrubrique($sousrubrique);
+            
+                    $manager->persist($product);
+            
+                    $manager->flush();
+                }
+            }
+
         }
 
-        for ($i = 1; $i <= 15; $i++) {
+        
 
-            $product = new Sousrubrique();
-            $product->setNomSousrubrique('Sous-rubrique # '.$i)
-                ->setCodeSousrubrique(generateText());
-    
-            $manager->persist($product);
-    
-            $manager->flush();
-        }
+        
 
     }
 }

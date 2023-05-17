@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use DateTimeImmutable;
 use App\Entity\Product;
+use App\Entity\Sousrubrique;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,14 +17,12 @@ use Symfony\Config\Doctrine\Orm\EntityManagerConfig;
 
 class ProductController extends AbstractController
 {
-    #[Route('/product', name: 'app_product')]
-    public function index(ProductRepository $repository): Response
+    #[Route('/sousrubrique/{sousrubrique}', name: 'app_product', methods: ['GET'])]
+    public function index(Sousrubrique $sousrubrique): Response
     {
 
-        $product = $repository->findAll();
-
         return $this->render('product/index.html.twig', [
-            'product' => $product
+            'product' => $sousrubrique
         ]);
     }
 
