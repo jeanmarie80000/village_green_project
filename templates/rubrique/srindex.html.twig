@@ -13,7 +13,7 @@
 
             {% for srs in sr.sousrubriques %}
                     <div class="col-12 col-md-6 col-lg-4">
-                        <a href="{{ path('app_product', { sousrubrique: srs.id }) }}"  class="card m-2" style='width: 25rem;'>
+                        <a href="{{ path('app_product_index', { sousrubrique: srs.id }) }}"  class="card m-2" style='width: 25rem;'>
                             <div>
                                 <img src="{{ asset('upload/product/500x350.jpeg') }}" class="img-fluid" alt="img_test">
                                 <h4 class="d-flex card-title justify-content-center">{{ srs.NomSousrubrique }}</h4>

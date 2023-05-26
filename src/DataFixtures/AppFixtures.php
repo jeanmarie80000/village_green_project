@@ -4,10 +4,11 @@ namespace App\DataFixtures;
 
 use App\Entity\Product;
 use App\Entity\Rubrique;
+use App\Entity\BanquePhoto;
 use App\Entity\Sousrubrique;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\ORM\Mapping\Id;
 
 class AppFixtures extends Fixture
 {
@@ -24,7 +25,7 @@ class AppFixtures extends Fixture
             return $randomString;
         }
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 7; $i++) {
 
             $rubrique = new Rubrique();
             $rubrique->setNomRubrique('Rubrique # '.$i)
@@ -34,7 +35,7 @@ class AppFixtures extends Fixture
     
             $manager->flush();
 
-            for ($j = 1; $j <= 15; $j++) {
+            for ($j = 1; $j <= mt_rand(8, 12); $j++) {
 
                 $sousrubrique = new Sousrubrique();
                 $sousrubrique->setNomSousrubrique('Sous-rubrique # '.$i . '-' .$j)
@@ -45,7 +46,7 @@ class AppFixtures extends Fixture
         
                 $manager->flush();
 
-                for ($k = 1; $k <= 10; $k++) {
+                for ($k = 1; $k <= mt_rand(10, 20); $k++) {
 
                     $product = new Product();
                     $product
@@ -57,10 +58,28 @@ class AppFixtures extends Fixture
                         ->setSousrubrique($sousrubrique);
             
                     $manager->persist($product);
-            
                     $manager->flush();
+
+                    for ($l = 1; $l <= 2; $l++) {
+
+                        $photo = new BanquePhoto();
+
+                        if ($l == 1) {
+                            $photo->setphoto('product/250x400.jpeg');
+                        } else {
+                            $photo->setphoto('product/400x500.jpeg');
+                        }
+                        $photo->setIdProduct($product);
+                        
+                        $manager->persist($photo);
+                        $manager->flush();
+                    }
+
+
                 }
             }
+
+
 
         }
 

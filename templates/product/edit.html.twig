@@ -1,42 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Edit Product{% endblock %}
+
 {% block body %}
-    {{ form_start(form) }}
-        <div class="container">
-            <h2 class="mt-4">Modification d'un produit</h2>
-            
-            <div class="form_group">
-                    {{ form_label(form.name) }}
-                    {{ form_widget(form.name) }}
-                <div class="form-error">
-                    {{ form_errors(form.name) }}
-                </div>
-            </div>
+    <h1>Edit Product</h1>
 
-            <div class="form_group">
-                    {{ form_label(form.label) }}
-                    {{ form_widget(form.label) }}
-                <div class="form-error">
-                    {{ form_errors(form.label) }}
-                </div>
-            </div>
+    {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
 
-            <div class="form_group">
-                    {{ form_label(form.descri) }}
-                    {{ form_widget(form.descri) }}
-                <div class="form-error">
-                    {{ form_errors(form.descri) }}
-                </div>
-            </div>
+    <a href="{{ path('app_product_index', { sousrubrique: product.sousrubrique.id }) }}" class="btn btn-primary">back to list</a>
 
-            <div class="form_group">
-                    {{ form_label(form.price_pt) }}
-                    {{ form_widget(form.price_pt) }}
-                <div class="form-error">
-                    {{ form_errors(form.price_pt) }}
-                </div>
-            </div>
-        </div>
-    {{ form_end(form) }}
-
+    {{ include('product/_delete_form.html.twig') }}
 {% endblock %}
