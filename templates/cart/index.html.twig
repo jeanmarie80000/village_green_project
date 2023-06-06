@@ -3,18 +3,49 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% if items|length > 0 %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/saint/Documents/GitHub/fil_rouge/village_green_project/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/saint/Documents/GitHub/fil_rouge/village_green_project/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Label</th>
+                    <th>Description</th>
+                    <th>Date création</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Bouton</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.label }}</td>
+                        <td>{{ item.product.descri }}</td>
+                        <td>{{ item.product.dateCreate|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ item.product.pricePt }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.pricePt * item.quantity }}</td>
+                        <td>
+                            <a href="#" class="d-flex btn btn-danger btn-sm justify-content-center">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+
+        <p>Panier vide !</p>
+
+    {% endif %}
+
+
+
 {% endblock %}

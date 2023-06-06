@@ -1,7 +1,7 @@
 {% block header %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('home')}}">Village Green</a>
+            <a class="navbar-brand" href="{{ path('app_home')}}">Village Green</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,20 +19,31 @@
                 </a> #}
             </ul>
 
-            {# <form class="d-flex">
-                <input class="form-control me-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <form class="d-flex">
+                {# <input class="form-control me-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> #}
 
 
+                {# todo : remplacer le bouton par un bouton deconnexion en cas de session #}
                 <div class="nav-item">
-                <a class="btn btn-success m-1" href="#">Connexion
-                </a>
+                    <a class="btn btn-success m-1" href="{{ path('app_login') }}">Connexion</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a class="btn btn-success m-1" href="{{ path('app_logout') }}">Deconnexion</a>
                 </div>
 
                 <div class="nav-item">
-                <a class="btn btn-success m-1" href="#">S'inscrire</a>
+                    <a class="btn btn-success m-1" href="#">S'inscrire</a>
                 </div>
-            </form> #}
+                
+                <div class="nav-item">
+                    <a class="btn btn-sucess m-1" href="#">
+                        <i class="fa fa-shopping-cart" style='font-size:24px'></i>
+                    </a>
+                </div>
+
+            </form>
 
             </div>
         </div>
