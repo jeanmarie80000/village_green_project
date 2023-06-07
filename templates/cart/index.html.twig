@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Village Green - Panier client{% endblock %}
 
 {% block body %}
 
@@ -37,6 +37,21 @@
                         </td>
                     </tr>
                 {% endfor %}
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ totalPro }}</td>
+                    <td>{{ totalCom }}</td>
+                    <td>
+                        <a href="#" class="d-flex btn btn-success btn-sm justify-content-center">
+                            Achat
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
 

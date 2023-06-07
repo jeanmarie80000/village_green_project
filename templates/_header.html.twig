@@ -25,20 +25,23 @@
 
 
                 {# todo : remplacer le bouton par un bouton deconnexion en cas de session #}
-                <div class="nav-item">
-                    <a class="btn btn-success m-1" href="{{ path('app_login') }}">Connexion</a>
-                </div>
+                {% if app.user %}
+                    <div class="nav-item">
+                        <a class="btn btn-success m-1" href="{{ path('app_logout') }}">Deconnexion</a>
+                    </div>
+                {% else %}
+                    <div class="nav-item">
+                        <a class="btn btn-success m-1" href="{{ path('app_login') }}">Connexion</a>
+                    </div>
+                {% endif %}
                 
-                <div class="nav-item">
-                    <a class="btn btn-success m-1" href="{{ path('app_logout') }}">Deconnexion</a>
-                </div>
 
                 <div class="nav-item">
-                    <a class="btn btn-success m-1" href="#">S'inscrire</a>
+                    <a class="btn btn-success m-1" href="{{ path('app_register') }}">S'inscrire</a>
                 </div>
                 
                 <div class="nav-item">
-                    <a class="btn btn-sucess m-1" href="#">
+                    <a class="btn btn-sucess m-1" href="{{ path('app_cart') }}">
                         <i class="fa fa-shopping-cart" style='font-size:24px'></i>
                     </a>
                 </div>
