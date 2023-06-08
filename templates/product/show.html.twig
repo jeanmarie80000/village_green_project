@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <div class="d-flex m-4 justify-content-center">
+        <h1>Product</h1>
+    </div>
+    
+    <div class="container">
+        <div class="col">
+            <div class="ml-1 my-1">
+
+                <div class="d-flex">
+                    <div class="col-3">
+                        <img src="{{ asset('upload/product/250x400.jpeg') }}" class="img-product" alt="img_test">                                
+                    </div>
+
+                    <div class="col-8">
+                        <h5>{{ product.name }}</h5>
+                        <hr>
+                        <p>{{ product.label }}</p>
+                        <hr>
+                        <h6>Price : </h6>
+                        <p>{{ product.pricePt }}</p>
+                        <hr>
+                        <h6>Description du produit : </h6>
+                        <p>{{ product.descri }}</p>
+                        <a href="{{ path('app_product_index', { sousrubrique: product.sousrubrique.id }) }}" class="btn btn-primary" >Back to list</a>
+                        <a href="{{ path('app_product_edit', { sousrubrique: product.sousrubrique.id, id: product.id }) }}" class="btn btn-secondary">Edit</a>
+                        <a href="{{ path('app_cart_add', {id : product.id }) }}" class="btn btn-success">Ajouter</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('product/_delete_form.html.twig') }}
+{% endblock %}

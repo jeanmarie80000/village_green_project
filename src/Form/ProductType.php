@@ -58,7 +58,7 @@ class ProductType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            // ->add('date_create', DateType::class)
+            ->add('date_create', DateType::class)
             ->add('price_pt', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',

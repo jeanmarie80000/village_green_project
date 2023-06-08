@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Village Green - Panier client{% endblock %}
+
+{% block body %}
+
+    {% if items|length > 0 %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Label</th>
+                    <th>Description</th>
+                    <th>Date création</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Bouton</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.label }}</td>
+                        <td>{{ item.product.descri }}</td>
+                        <td>{{ item.product.dateCreate|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ item.product.pricePt }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.pricePt * item.quantity }}</td>
+                        <td>
+                            <a href="#" class="d-flex btn btn-danger btn-sm justify-content-center">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ totalPro }}</td>
+                    <td>{{ totalCom }}</td>
+                    <td>
+                        <a href="#" class="d-flex btn btn-success btn-sm justify-content-center">
+                            Achat
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    {% else %}
+
+        <p>Panier vide !</p>
+
+    {% endif %}
+
+
+
+{% endblock %}
