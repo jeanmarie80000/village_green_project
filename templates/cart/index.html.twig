@@ -6,54 +6,79 @@
 
     {% if items|length > 0 %}
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Produit</th>
-                    <th>Label</th>
-                    <th>Description</th>
-                    <th>Date création</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Total</th>
-                    <th>Bouton</th>
-                </tr>
-            </thead>
+        {% for item in items %}
+        <div class="container">
+            <div class="m-4">
+                <div class="d-flex">
 
-            <tbody>
-                {% for item in items %}
-                    <tr>
-                        <td>{{ item.product.name }}</td>
-                        <td>{{ item.product.label }}</td>
-                        <td>{{ item.product.descri }}</td>
-                        <td>{{ item.product.dateCreate|date('Y-m-d H:i:s') }}</td>
-                        <td>{{ item.product.pricePt }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.product.pricePt * item.quantity }}</td>
-                        <td>
-                            <a href="#" class="d-flex btn btn-danger btn-sm justify-content-center">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
+                    <div class="d-flex col-9">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="{{ asset('upload/product/250x400.jpeg') }}" class="img-fluid rounded" alt="img_test">                                
+                                </div>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{ totalPro }}</td>
-                    <td>{{ totalCom }}</td>
-                    <td>
-                        <a href="#" class="d-flex btn btn-success btn-sm justify-content-center">
-                            Achat
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                {# body product #}
+                                <div class="col-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ item.product.name }}</h5>
+                                        <hr>
+                                        <p class="card-text">{{ item.product.label }}</p>
+                                        <hr>
+                                        <p class="card-text">{{ item.product.descri }}</p>
+                                        {# <p class="card-text">{{ item.product.dateCreate|date('Y-m-d H:i:s') }}</p> #}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Info prix produit #}
+                    <div class="col-3 mx-2">
+                        <div class="card">
+                            <div class="m-4">
+                                <h6>Total unitaire : </h6>
+                                <p class="card-text">{{ item.product.pricePt }} €</p>
+
+                                <h6>Nombre commandé : </h6>
+                                <p class="card-text">{{ item.quantity }}</p>
+
+                                <h6>Total :</h6>
+                                <p class="card-text">{{ item.product.pricePt * item.quantity }} €</p>
+
+                                <a href="#" class="d-flex btn btn-danger btn-sm justify-content-center">
+                                    Retirer</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="container">
+
+                <div class="d-flex justify-content-end">
+                    <div class="card">
+                        <div class="row">
+
+                                {# todo : aligner #}
+                                <div class="m-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Commande : </h5>
+                                        <hr>
+                                        <p class="card-text">Nombre de produit(s) commandé(s) : {{ totalPro }}</p>
+                                        <p class="card-text">Total de la commande : <b>{{ totalCom }} €</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
 
     {% else %}
 
