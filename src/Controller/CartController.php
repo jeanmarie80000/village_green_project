@@ -36,8 +36,6 @@ class CartController extends AbstractController
 
         }
 
-
-
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
             'items' => $dataCart, 
@@ -63,7 +61,7 @@ class CartController extends AbstractController
         $rubrique = $repo->findAll();
 
         return $this->render('rubrique/index.html.twig', [
-            'rubrique' => $rubrique,
+            'rubriques' => $rubrique,
         ]);
     }
 

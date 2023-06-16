@@ -36,29 +36,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 30)]
     private ?string $surname = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 30)]
     private ?string $firstname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $deliveryAddress = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $deliveryPostCode = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $billingAddress = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $billingPostCode = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    
     public function getEmail(): ?string
     {
         return $this->email;
     }
-
+    
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
+        
         return $this;
     }
-
+    
     /**
      * A visual identifier that represents this user.
      *
@@ -68,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
-
+    
     /**
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
@@ -76,7 +88,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
-
+    
     /**
      * @see UserInterface
      */
@@ -84,18 +96,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
-
+        
         return array_unique($roles);
     }
-
+    
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
+        
         return $this;
     }
-
-
+    
+    
     /**
      * @return string
      */
@@ -103,15 +115,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->plainPassword;
     }
-
-    public function setPlainPasssword(string $plainPassword): self
+    
+    public function setPlainPassword(string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
-
+        
         return $this;
     }
-
-
+    
+    
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -119,14 +131,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->password;
     }
-
+    
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
+        
         return $this;
     }
-
+    
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
@@ -137,7 +149,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return null;
     }
-
+    
     /**
      * @see UserInterface
      */
@@ -146,28 +158,77 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
+    
     public function getSurname(): ?string
     {
         return $this->surname;
     }
-
+    
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
-
+        
         return $this;
     }
-
+    
     public function getFirstname(): ?string
     {
         return $this->firstname;
     }
-
+    
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+        
+        return $this;
+    }
+
+    public function getDeliveryAddress(): ?string
+    {
+        return $this->deliveryAddress;
+    }
+
+    public function setDeliveryAddress(string $deliveryAddress): static
+    {
+        $this->deliveryAddress = $deliveryAddress;
 
         return $this;
     }
+
+    public function getDeliveryPostCode(): ?string
+    {
+        return $this->deliveryPostCode;
+    }
+
+    public function setDeliveryPostCode(string $deliveryPostCode): static
+    {
+        $this->deliveryPostCode = $deliveryPostCode;
+
+        return $this;
+    }
+
+    public function getBillingAddress(): ?string
+    {
+        return $this->billingAddress;
+    }
+
+    public function setBillingAddress(string $billingAddress): static
+    {
+        $this->billingAddress = $billingAddress;
+
+        return $this;
+    }
+
+    public function getBillingPostCode(): ?string
+    {
+        return $this->billingPostCode;
+    }
+
+    public function setBillingPostCode(string $billingPostCode): static
+    {
+        $this->billingPostCode = $billingPostCode;
+
+        return $this;
+    }
+
 }

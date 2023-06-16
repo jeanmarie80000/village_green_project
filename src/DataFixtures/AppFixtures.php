@@ -41,8 +41,14 @@ class AppFixtures extends Fixture
                 ->setSurname($this->faker->name())
                 ->setFirstname($this->faker->name())
                 ->setEmail($this->faker->email())
+
+                ->setDeliveryAddress($this->faker->address())
+                ->setDeliveryPostCode($this->faker->postcode())
+                ->setBillingAddress($this->faker->address())
+                ->setBillingPostCode($this->faker->postcode())
+
                 ->setRoles(['ROLE_USER'])
-                ->setPlainPasssword('password');
+                ->setPlainPassword('password');
 
             $hashPassword = $this->hasher->hashPassword(
                 $user,
@@ -54,21 +60,12 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-        function generateText($lenght = 25) {
-            $chara = '0123456789abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charaLenght = strlen($chara);
-            $randomString = '';
-            for ($i = 0; $i < $lenght; $i++) { 
-                $randomString = $chara[random_int(0, $charaLenght - 1)];
-            }
-            return $randomString;
-        }
-
         //Fixtures for Rubrique, SousRubrique, Product et Photo
         for ($i = 1; $i <= 7; $i++) {
             $rubrique = new Rubrique();
-            $rubrique->setNomRubrique('Rubrique # '.$i)
-                ->setCodeRubrique(generateText());
+            $rubrique
+                ->setNomRubrique('Rubrique # '.$i)
+                ->setCodeRubrique($this->faker->words(1, true));
     
             $manager->persist($rubrique);
     
@@ -77,8 +74,9 @@ class AppFixtures extends Fixture
             for ($j = 1; $j <= mt_rand(8, 12); $j++) {
 
                 $sousrubrique = new Sousrubrique();
-                $sousrubrique->setNomSousrubrique('Sous-rubrique # '.$i . '-' .$j)
-                    ->setCodeSousrubrique(generateText())
+                $sousrubrique
+                    ->setNomSousrubrique('Sous-rubrique # '.$i . '-' .$j)
+                    ->setCodeSousrubrique($this->faker->words(1, true))
                     ->setRubrique($rubrique);
         
                 $manager->persist($sousrubrique);

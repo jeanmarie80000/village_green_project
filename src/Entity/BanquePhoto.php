@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\BanquePhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BanquePhotoRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: BanquePhotoRepository::class)]
+#[ApiResource(
+    normalizationContext: [ "groups" => ["read:product"]]
+)]
 class BanquePhoto
 {
     #[ORM\Id]

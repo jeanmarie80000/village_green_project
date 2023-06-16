@@ -17,6 +17,10 @@ class UserType extends AbstractType
             ->add('email')
             ->add('roles')
             ->add('password')
+            ->add('deliveryAddress')
+            ->add('deliveryPostCode')
+            ->add('billingAddress')
+            ->add('billingPostCode')
         ;
     }
 

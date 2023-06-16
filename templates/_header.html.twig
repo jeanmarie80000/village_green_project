@@ -7,24 +7,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_rubrique')}}">Rubriques</a>
-                </li>
+                
+                {% if app.user %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_rubrique')}}">Rubriques</a>
+                    </li>
+                {% endif %}
+                
                 {# <li class="nav-item">
                 <a class="nav-link" href="{{ path('app_sousrubrique')}}">Sous-rubriques</a>
-                </li> #}
-                {# <li class="nav-item">
+                </li>
+                <li class="nav-item">
                 <a class="nav-link" href="{{ path('app_product')}}">Produits
-                </a> #}
+                </a>
+                </li>
+                #}
             </ul>
 
             <form class="d-flex">
-                {# <input class="form-control me-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> #}
+                {# <input class="form-control m-1" type="search" placeholder="Search">
+                <button class="btn btn-secondary m-1" type="submit">Search</button> #}
 
 
-                {# todo : remplacer le bouton par un bouton deconnexion en cas de session #}
                 {% if app.user %}
                     <div class="nav-item">
                         <a class="btn btn-success m-1" href="{{ path('app_logout') }}">Deconnexion</a>
@@ -43,8 +47,11 @@
                 <div class="nav-item">
                     <a class="btn btn-sucess m-1" href="{{ path('app_cart') }}">
                         <i class="fa fa-shopping-cart" style='font-size:24px'></i>
+                        {# <span>0</span> #}
                     </a>
                 </div>
+
+                {# <p class="card-text">Nombre de produit(s) commandé(s) : {{ totalPro }}</p> #}
 
             </form>
 

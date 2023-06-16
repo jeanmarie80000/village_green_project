@@ -11,13 +11,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class RubriqueController extends AbstractController
 {
     #[Route('/rubrique', name: 'app_rubrique')]
-    public function index(RubriqueRepository $repo): Response
+    public function index(RubriqueRepository $repository): Response
     {
-
-        $rubrique = $repo->findAll();
+        $rub = $repository->findAll();
 
         return $this->render('rubrique/index.html.twig', [
-            'rubrique' => $rubrique,
+            'rubriques' => $rub
         ]);
     }
 }
