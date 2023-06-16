@@ -12,6 +12,11 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+        {{ form_row(registrationForm.deliveryAddress) }}
+        {{ form_row(registrationForm.deliveryPostCode) }}
+        {{ form_row(registrationForm.billingAddress) }}
+        {{ form_row(registrationForm.billingPostCode) }}
+
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>

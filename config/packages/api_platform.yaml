@@ -6,4 +6,4 @@ api_platform:
     swagger:
         versions: [3]
     # formats:
-        # json:   ['application/json']
+    #     json:   ['application/json']

@@ -45,6 +45,10 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('deliveryAddress')
+            ->add('deliveryPostCode')
+            ->add('billingAddress')
+            ->add('billingPostCode')
         ;
     }
 

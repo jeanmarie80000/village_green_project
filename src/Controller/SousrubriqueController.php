@@ -15,10 +15,9 @@ class SousrubriqueController extends AbstractController
 {
     
     /**
-     * Road to "Sous-rubrique" with "Rubrique" id
      * 
      */
-    #[Route('rubrique/{rubrique}', name: 'app_sousrubriqueId', methods: ['GET'])]
+    #[Route('rubrique/{id}', name: 'app_sousrubriqueId', methods: ['GET'])]
     public function indexSr(Rubrique $rubrique): Response
     {
         
@@ -28,7 +27,6 @@ class SousrubriqueController extends AbstractController
     }
     
     /**
-     * Road to "Sous-rubrique" without "Rubrique" id
      *
      */
     #[Route('/rubrique/sousrubrique', name: 'app_sousrubrique')]
