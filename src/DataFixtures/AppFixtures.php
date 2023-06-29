@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Admin;
 use Faker\Factory;
 use App\Entity\User;
 use Faker\Generator;
@@ -37,6 +38,7 @@ class AppFixtures extends Fixture
         for($i = 0; $i < 10; $i++)
         {
             $user = new User();
+            
             $user
                 ->setSurname($this->faker->name())
                 ->setFirstname($this->faker->name())
@@ -46,17 +48,41 @@ class AppFixtures extends Fixture
                 ->setDeliveryPostCode($this->faker->postcode())
                 ->setBillingAddress($this->faker->address())
                 ->setBillingPostCode($this->faker->postcode())
-
+                
                 ->setRoles(['ROLE_USER'])
                 ->setPlainPassword('password');
+                
+            
+            $plainTextPassword = $user->getPlainPassword();
 
             $hashPassword = $this->hasher->hashPassword(
                 $user,
-                '123'
+                $plainTextPassword
+            );
+
+            
+            $user->setPassword($hashPassword);
+            $manager->persist($user);
+        }
+
+        // fixture for Admin
+        for($i = 0; $i < 2; $i++)
+        {
+            $user = new Admin();
+            
+            $user
+            ->setUsername($this->faker->name())
+            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
+            ->setPlainPassword('password');
+            
+            
+            $plainTextPassword = $user->getPlainPassword();
+            $hashPassword = $this->hasher->hashPassword(
+                $user,
+                $plainTextPassword
             );
 
             $user->setPassword($hashPassword);
-    
             $manager->persist($user);
         }
 

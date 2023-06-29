@@ -1,0 +1,50 @@
+GET https://127.0.0.1:8000/api/products
+Accept : application/json
+
+###
+
+
+GET https://127.0.0.1:8000/api/products/11
+Accept : application/json
+
+
+###
+
+POST https://127.0.0.1:8000/api/products/11
+Content-type: application/json
+Accept: application/json
+
+{
+    "name": "test",
+    "price_pt": "125.99",
+    "sousrubrique": "/api/sousrubriques/1"
+}
+
+###
+
+DELETE https://127.0.0.1:8000/api/products/11
+Accept: application/json
+
+###
+# Patch corrige uniquement les valeurs indiquées de l'entité
+
+PATCH https://127.0.0.1:8000/api/products/11
+Content-Type: application/merge-patch+json
+Accept: application/json
+
+{
+    "name": "Blah",
+    "price_pt": "42.00",
+    "sousrubrique": "/api/sousrubriques/1"
+}
+
+###
+# Put met à jour *toute* l'entité
+PUT https://127.0.0.1:8000/api/products/11
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Blah2",
+    "price_pt": "42.42"
+}

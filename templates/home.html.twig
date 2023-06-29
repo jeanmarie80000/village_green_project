@@ -2,12 +2,14 @@
 
 {% block body %}
     <div class="container">
-        <div class="m-3">
+        <br><br>
+        <div class="m-4">
             <div class="d-flex display-4 justify-content-center">Hello
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 , cher client !
             {% endif %}
             </div>
+
             
             <hr>
             
@@ -18,35 +20,47 @@
             {% endif %}
         </div>
 
-        {# Slider doesn't work #}
-        <div class='d-flex justify-content-center'>
+        {# input React #}
+        <div id='root'>
+        </div>
+
+        {# Slider doesn't work, error message "... was loaded over HTTPS, but requested an insecure element..." #}
+        {# <div class='d-flex justify-content-center'>
             <div id="carouselMain" class="carousel slide" data-bs-ride="true">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src={{ asset('/upload/product/guitares.jpg')}} class="" alt="img1">
-
+                        <img src={{ asset('/upload/product/guitares.jpg')}} class="d-block w-100" alt="img1">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Guitars</h5>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                    <img src={{ asset('/upload/product/bass.jpg')}} class="" alt="img2">
 
+                    <div class="carousel-item">
+                    <img src={{ asset('/upload/product/bass.jpg')}} class="d-block w-100" alt="img2">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Basses</h5>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                    <img src={{ asset('/upload/product/drumming-basics.jpg')}} class="" alt="img3">
 
+                    <div class="carousel-item">
+                    <img src={{ asset('/upload/product/drumming-basics.jpg')}} class="d-block w-100" alt="img3">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Drums</h5>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                    <img src={{ asset('/upload/product/ampli.jpg')}} class="d-block w-100" alt="img4">
+
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Amplis</h5>
                         </div>
                     </div>
                 </div>
@@ -59,8 +73,10 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+
             </div>
-        </div>
+        </div> #}
+        {# End slider #}
 
     </div>
 

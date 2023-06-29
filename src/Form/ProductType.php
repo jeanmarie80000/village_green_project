@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -59,7 +60,7 @@ class ProductType extends AbstractType
                 ]
             ])
             ->add('date_create', DateType::class)
-            ->add('price_pt', TextType::class, [
+            ->add('price_pt', MoneyType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'minlenght' => '5',

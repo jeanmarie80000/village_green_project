@@ -8,8 +8,9 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\User
-                property: email
+                class: App\Entity\Admin
+                property: username
+        # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
@@ -40,8 +41,9 @@ security:
         - { path: ^/profile, roles: ROLE_USER }
 
         # Routing for Admin only
-        - { path: /admin, roles: ROLE_ADMIN }
-        - { path: /api, roles: ROLE_ADMIN }
+        # - { path: '^/admin', roles: ROLE_ADMIN }
+        - { path: '^/api/rubriques', roles: ROLE_ADMIN }
+        - { path: '^/api/sousrubriques', roles: ROLE_ADMIN }
 
 when@test:
     security:

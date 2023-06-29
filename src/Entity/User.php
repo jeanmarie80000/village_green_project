@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Assert\Email;
-use Assert\NotBlank;
 use ORM\EntityListeners;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;

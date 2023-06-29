@@ -3,6 +3,7 @@
 {% block title %}Village Green - Connexion{% endblock %}
 
 {% block body %}
+
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -15,6 +16,10 @@
     {% endif %}
 
     <div class="container">
+
+        <div class='d-flex m-5'>
+        </div>
+        
         <h1 class="h3 mb-3 font-weight-normal">Formulaire de connexion</h1>
 
         <form action="{{ path('app_login') }}" method='post'>
