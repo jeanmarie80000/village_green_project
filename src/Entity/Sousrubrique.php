@@ -30,7 +30,7 @@ class Sousrubrique
     #[ORM\JoinColumn(nullable: false)]
     private ?Rubrique $rubrique = null;
 
-    #[ORM\OneToMany(mappedBy: 'sousrubrique', targetEntity: Product::class)]
+    #[ORM\OneToMany(mappedBy: 'sousrubrique', targetEntity: Product::class, orphanRemoval: 'true')]
     private Collection $products;
 
     public function __construct()

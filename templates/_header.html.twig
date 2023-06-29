@@ -1,10 +1,13 @@
 {% block header %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container-fluid">
+        
             <a class="navbar-brand" href="{{ path('app_home')}}">Village Green</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 
@@ -13,21 +16,12 @@
                     <a class="nav-link" href="{{ path('app_rubrique')}}">Rubriques</a>
                     </li>
                 {% endif %}
-                
-                {# <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_sousrubrique')}}">Sous-rubriques</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_product')}}">Produits
-                </a>
-                </li>
-                #}
+            
             </ul>
 
             <form class="d-flex">
                 {# <input class="form-control m-1" type="search" placeholder="Search">
                 <button class="btn btn-secondary m-1" type="submit">Search</button> #}
-
 
                 {% if app.user %}
                     <div class="nav-item">
@@ -37,12 +31,13 @@
                     <div class="nav-item">
                         <a class="btn btn-success m-1" href="{{ path('app_login') }}">Connexion</a>
                     </div>
+                    
+                    <div class="nav-item">
+                        <a class="btn btn-success m-1" href="{{ path('app_register') }}">S'inscrire</a>
+                    </div>
                 {% endif %}
                 
 
-                <div class="nav-item">
-                    <a class="btn btn-success m-1" href="{{ path('app_register') }}">S'inscrire</a>
-                </div>
                 
                 <div class="nav-item">
                     <a class="btn btn-sucess m-1" href="{{ path('app_cart') }}">
@@ -54,7 +49,6 @@
                 {# <p class="card-text">Nombre de produit(s) commandé(s) : {{ totalPro }}</p> #}
 
             </form>
-
             </div>
         </div>
     </nav>

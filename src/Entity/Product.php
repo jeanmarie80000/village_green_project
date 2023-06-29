@@ -46,7 +46,7 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Sousrubrique $sousrubrique = null;
 
-    #[ORM\OneToMany(mappedBy: 'id_product', targetEntity: BanquePhoto::class)]
+    #[ORM\OneToMany(mappedBy: 'id_product', targetEntity: BanquePhoto::class, orphanRemoval: 'true')]
     private Collection $banquePhotos;
 
     public function __construct()

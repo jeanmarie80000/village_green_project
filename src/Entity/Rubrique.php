@@ -26,7 +26,7 @@ class Rubrique
     #[ORM\Column(length: 255)]
     private ?string $nom_rubrique = null;
 
-    #[ORM\OneToMany(mappedBy: 'rubrique', targetEntity: Sousrubrique::class)]
+    #[ORM\OneToMany(mappedBy: 'rubrique', targetEntity: Sousrubrique::class, orphanRemoval: 'true')]
     private Collection $sousrubriques;
 
     public function __construct()

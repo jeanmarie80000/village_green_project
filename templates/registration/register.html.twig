@@ -3,22 +3,28 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class='d-flex m-5'>
+    </div>
+    
+    <div class='px-5'>
+        <h1>Register</h1>
+        
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.surname) }}
+            {{ form_row(registrationForm.firstname) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de Passe*'
+            }) }}
+            {{ form_row(registrationForm.billingAddress) }}
+            {{ form_row(registrationForm.billingPostCode) }}
+            {{ form_row(registrationForm.deliveryAddress) }}
+            {{ form_row(registrationForm.deliveryPostCode) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.surname) }}
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.deliveryAddress) }}
-        {{ form_row(registrationForm.deliveryPostCode) }}
-        {{ form_row(registrationForm.billingAddress) }}
-        {{ form_row(registrationForm.billingPostCode) }}
+            <div class='mt-2'>
+                {{ form_row(registrationForm.agreeTerms) }}
+            </div>
 
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
