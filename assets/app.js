@@ -6,7 +6,7 @@ import ReactDOM from 'react';
 
 import './bootstrap.js';
 import './styles/app.css';
-import Hello from './react/controllers/Hello.jsx';
+import ProductList from './react/data/dataProduct.jsx';
 
 // registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));
 
@@ -15,6 +15,6 @@ const root = createRoot(rootElement);
 
 root.render(
     <React.StrictMode>
-        <Hello />
+        <ProductList />
     </React.StrictMode>
 )
