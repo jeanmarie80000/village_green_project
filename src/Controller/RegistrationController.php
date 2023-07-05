@@ -27,7 +27,7 @@ class RegistrationController extends AbstractController
             
             $user->setRoles(['ROLE_USER'])
             // encode the plain password
-                 ->setPassword(
+                ->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
@@ -37,13 +37,18 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
+            $this->addFlash(
+                'success',
+                'L\'inscription a été acceptée.'
+            );
 
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
             );
+
         }
 
         return $this->render('registration/register.html.twig', [

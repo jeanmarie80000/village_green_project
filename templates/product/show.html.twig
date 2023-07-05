@@ -12,7 +12,7 @@
 
                 <div class="d-flex">
                     <div class="col-3">
-                        <img src="{{ asset('upload/product/250x400.jpeg') }}" class="img-product" alt="img_test">                                
+                        <img src="{{ asset('upload/product/') }}{{ photo.photo }}" class="img-fluid" alt="{{ photo.photo }}">                                
                     </div>
 
                     <div class="col-8">
@@ -23,7 +23,7 @@
                         <h6>Description du produit : </h6>
                         <p>{{ product.descri }}</p>
                         <h6>Price : </h6>
-                        <p>{{ product.pricePt }}</p>
+                        <p>{{ product.pricePt }} €</p>
                         <hr>
                         <a href="{{ path('app_product_index', { sousrubrique: product.sousrubrique.id }) }}" class="btn btn-primary" >Back to list</a>
                         <a href="{{ path('app_cart_add', {id : product.id }) }}" class="btn btn-success">Ajouter</a>

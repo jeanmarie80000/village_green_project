@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Admin;
 use Faker\Factory;
 use App\Entity\User;
 use Faker\Generator;
@@ -65,27 +64,6 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-        // fixture for Admin
-        for($i = 0; $i < 2; $i++)
-        {
-            $user = new Admin();
-            
-            $user
-            ->setUsername($this->faker->name())
-            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
-            ->setPlainPassword('password');
-            
-            
-            $plainTextPassword = $user->getPlainPassword();
-            $hashPassword = $this->hasher->hashPassword(
-                $user,
-                $plainTextPassword
-            );
-
-            $user->setPassword($hashPassword);
-            $manager->persist($user);
-        }
-
         //Fixtures for Rubrique, SousRubrique, Product et Photo
         for ($i = 1; $i <= 7; $i++) {
             $rubrique = new Rubrique();
@@ -127,9 +105,9 @@ class AppFixtures extends Fixture
                         $photo = new BanquePhoto();
 
                         if ($l == 1) {
-                            $photo->setphoto('product/250x400.jpeg');
+                            $photo->setphoto('250x400.jpeg');
                         } else {
-                            $photo->setphoto('product/400x500.jpeg');
+                            $photo->setphoto('300x180.png');
                         }
                         $photo->setIdProduct($product);
                         

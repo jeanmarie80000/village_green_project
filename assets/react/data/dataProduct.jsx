@@ -12,16 +12,17 @@ export default function ProductList() {
                 // setData(res.data)
                 console.log(res.data)
                 )
-            .catch(error => console.log(error));
+                .catch(error => console.log(error));
             }, []);
-
+        
+            
         return (
             <div>
-                <h3>Liste des produits</h3>
+                <h3>Liste des produits (React, temporaire)</h3>
                 <ul>
                     {
-                        data.map(product =>
-                            <li key={product.id}>{product.name}</li>
+                        data.map( (product, index) =>
+                            <li key={index}>{product.name}</li>
                         )
                     }
                 </ul>

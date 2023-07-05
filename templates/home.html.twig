@@ -2,22 +2,38 @@
 
 {% block body %}
     <div class="container">
+
         <br><br>
+
+        {% for message in app.flashes('success') %}
+            <div class="m-4">
+                <div class='alert alert-dismissible alert-success'>
+                    <strong>{{ message }}</strong>
+                </div>
+            </div>
+        {% endfor %}
+
         <div class="m-4">
             <div class="d-flex display-4 justify-content-center">Hello
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_ADMIN')%}
+                , Admin !
+            {% elseif is_granted('ROLE_USER') %}
                 , cher client !
             {% endif %}
             </div>
-
             
             <hr>
-            
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-primary col-6 m-3" href="{{ path('app_admin') }}">Menu Admin</a>
+                </div>
+            {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
                 <p class="d-flex justify-content-center">Bienvenue sur le site, n'hésitez pas à naviguer pour voir nos produits !</p>
             {% else %}
                 <p class="d-flex justify-content-center">Bienvenue sur le site. Pour voir le catalogue, connectez-vous ou sinon inscrivez-vous !</p>
             {% endif %}
+
         </div>
 
         {# input React #}
