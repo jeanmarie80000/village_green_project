@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 
 #[UniqueEntity('email')]
 #[EntityListeners(['App\Entity\listener\UserListener'])]
@@ -26,6 +27,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    #[Regex(
+        pattern: '/^\s*\S+(?:\s+\S+){0,6}/'
+    )]
     private ?string $plainPassword = null;
 
     /**

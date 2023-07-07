@@ -30,10 +30,11 @@ class ProductController extends AbstractController
         $productList = $sousrubrique->getProducts();
         $firstResult = $productList->first();
 
-        // dd($productList);
+        $imageExpo = $product->getBanquePhotos();
 
         return $this->render('product/index.html.twig', [
-            'products' => $sousrubrique
+            'products' => $sousrubrique,
+            'imageExpo' => $imageExpo[1]->getPhoto()
         ]);
 
     }

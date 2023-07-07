@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
     {
 
         // fixtures for User
-        for($i = 0; $i < 10; $i++)
+        for($i = 0; $i < mt_rand(7, 15); $i++)
         {
             $user = new User();
             
@@ -65,7 +65,7 @@ class AppFixtures extends Fixture
         }
 
         //Fixtures for Rubrique, SousRubrique, Product et Photo
-        for ($i = 1; $i <= 7; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
             $rubrique = new Rubrique();
             $rubrique
                 ->setNomRubrique('Rubrique # '.$i)
@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
     
             $manager->flush();
 
-            for ($j = 1; $j <= mt_rand(8, 12); $j++) {
+            for ($j = 1; $j <= mt_rand(2, 5); $j++) {
 
                 $sousrubrique = new Sousrubrique();
                 $sousrubrique
@@ -87,7 +87,7 @@ class AppFixtures extends Fixture
         
                 $manager->flush();
 
-                for ($k = 1; $k <= mt_rand(10, 20); $k++) {
+                for ($k = 1; $k <= mt_rand(2, 10); $k++) {
                     $product = new Product();
                     $product
                         ->setName('product # '.$i . '-' .$j. '-' .$k)

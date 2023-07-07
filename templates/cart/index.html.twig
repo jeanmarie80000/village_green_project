@@ -3,12 +3,20 @@
 {% block title %}Village Green - Panier client{% endblock %}
 
 {% block body %}
+    
+    <div class='d-flex m-4'>
+    </div>
 
     {% if items|length > 0 %}
 
         {% for item in items %}
         <div class="container">
-            <div class="m-4">
+            <div class="mt-5">
+
+                <h3 class='d-flex justify-content-center title'>
+                    Panier
+                </h3>
+
                 <div class="d-flex">
 
                     <div class="d-flex col-9">
