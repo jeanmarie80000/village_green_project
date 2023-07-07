@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Admin;
 use Faker\Factory;
 use App\Entity\User;
 use Faker\Generator;
@@ -35,7 +34,7 @@ class AppFixtures extends Fixture
     {
 
         // fixtures for User
-        for($i = 0; $i < 10; $i++)
+        for($i = 0; $i < mt_rand(7, 15); $i++)
         {
             $user = new User();
             
@@ -65,29 +64,8 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-        // fixture for Admin
-        for($i = 0; $i < 2; $i++)
-        {
-            $user = new Admin();
-            
-            $user
-            ->setUsername($this->faker->name())
-            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
-            ->setPlainPassword('password');
-            
-            
-            $plainTextPassword = $user->getPlainPassword();
-            $hashPassword = $this->hasher->hashPassword(
-                $user,
-                $plainTextPassword
-            );
-
-            $user->setPassword($hashPassword);
-            $manager->persist($user);
-        }
-
         //Fixtures for Rubrique, SousRubrique, Product et Photo
-        for ($i = 1; $i <= 7; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
             $rubrique = new Rubrique();
             $rubrique
                 ->setNomRubrique('Rubrique # '.$i)
@@ -97,7 +75,7 @@ class AppFixtures extends Fixture
     
             $manager->flush();
 
-            for ($j = 1; $j <= mt_rand(8, 12); $j++) {
+            for ($j = 1; $j <= mt_rand(2, 5); $j++) {
 
                 $sousrubrique = new Sousrubrique();
                 $sousrubrique
@@ -109,7 +87,7 @@ class AppFixtures extends Fixture
         
                 $manager->flush();
 
-                for ($k = 1; $k <= mt_rand(10, 20); $k++) {
+                for ($k = 1; $k <= mt_rand(2, 10); $k++) {
                     $product = new Product();
                     $product
                         ->setName('product # '.$i . '-' .$j. '-' .$k)
@@ -127,9 +105,9 @@ class AppFixtures extends Fixture
                         $photo = new BanquePhoto();
 
                         if ($l == 1) {
-                            $photo->setphoto('product/250x400.jpeg');
+                            $photo->setphoto('250x400.jpeg');
                         } else {
-                            $photo->setphoto('product/400x500.jpeg');
+                            $photo->setphoto('300x180.png');
                         }
                         $photo->setIdProduct($product);
                         
