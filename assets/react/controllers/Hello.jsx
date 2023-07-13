@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 const Hello = () => {
-    return <h3>Hello !</h3>;
+    return <h3>Hello ! (React, temporaire)</h3>;
 }
 
 export default Hello;

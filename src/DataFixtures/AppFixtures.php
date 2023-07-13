@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        // fixtures for User
+        //fixtures for User
         for($i = 0; $i < mt_rand(7, 15); $i++)
         {
             $user = new User();
@@ -64,7 +64,7 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-        //Fixtures for Rubrique, SousRubrique, Product et Photo
+        //fixtures for Rubrique (include SousRubrique, Product et Photo)
         for ($i = 1; $i <= 4; $i++) {
             $rubrique = new Rubrique();
             $rubrique
@@ -74,7 +74,20 @@ class AppFixtures extends Fixture
             $manager->persist($rubrique);
     
             $manager->flush();
+            
+            //fixture for rubrique photo
+            for ($l = 1; $l <= 1; $l++) {
 
+                $photo = new BanquePhoto();
+
+                $photo->setphoto('600x350.jpeg');
+                $photo->setIdRubrique($rubrique);
+                
+                $manager->persist($photo);
+                $manager->flush();
+            }
+
+            //fixture for sousrubrique
             for ($j = 1; $j <= mt_rand(2, 5); $j++) {
 
                 $sousrubrique = new Sousrubrique();
@@ -87,6 +100,19 @@ class AppFixtures extends Fixture
         
                 $manager->flush();
 
+                //fixture for Sousrubrique photo
+                for ($l = 1; $l <= 1; $l++) {
+
+                    $photo = new BanquePhoto();
+    
+                    $photo->setphoto('500x350.jpeg');
+                    $photo->setIdSousrubrique($sousrubrique);
+                    
+                    $manager->persist($photo);
+                    $manager->flush();
+                }
+
+                //fixture for Product
                 for ($k = 1; $k <= mt_rand(2, 10); $k++) {
                     $product = new Product();
                     $product
@@ -100,6 +126,7 @@ class AppFixtures extends Fixture
                     $manager->persist($product);
                     $manager->flush();
 
+                    //fixture for product multiple photos
                     for ($l = 1; $l <= 2; $l++) {
 
                         $photo = new BanquePhoto();

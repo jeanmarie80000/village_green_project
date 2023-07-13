@@ -23,6 +23,12 @@ class BanquePhoto
     #[ORM\ManyToOne(inversedBy: 'banquePhotos')]
     private ?Product $id_product = null;
 
+    #[ORM\OneToOne(inversedBy: 'photo', cascade: ['persist', 'remove'])]
+    private ?Rubrique $idRubrique = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Sousrubrique $idSousrubrique = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,4 +57,30 @@ class BanquePhoto
 
         return $this;
     }
+
+    public function getIdRubrique(): ?Rubrique
+    {
+        return $this->idRubrique;
+    }
+
+    public function setIdRubrique(?Rubrique $idRubrique): static
+    {
+        $this->idRubrique = $idRubrique;
+
+        return $this;
+    }
+
+    public function getIdSousrubrique(): ?Sousrubrique
+    {
+        return $this->idSousrubrique;
+    }
+
+    public function setIdSousrubrique(?Sousrubrique $idSousrubrique): static
+    {
+        $this->idSousrubrique = $idSousrubrique;
+
+        return $this;
+    }
+
+    
 }

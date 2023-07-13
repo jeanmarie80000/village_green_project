@@ -20,7 +20,6 @@ class ProductController extends AbstractController
     
     #[Route('/index', name: 'app_product_index', methods: ['GET'])]
     public function index(
-        ManagerRegistry $doctrine,
         Sousrubrique $sousrubrique,
         Product $product,
         BanquePhotoRepository $photoRepo

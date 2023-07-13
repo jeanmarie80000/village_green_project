@@ -29,6 +29,9 @@ class Rubrique
     #[ORM\OneToMany(mappedBy: 'rubrique', targetEntity: Sousrubrique::class, orphanRemoval: 'true')]
     private Collection $sousrubriques;
 
+    #[ORM\OneToOne(mappedBy: 'idRubrique', cascade: ['persist', 'remove'])]
+    private ?BanquePhoto $photo = null;
+
     public function __construct()
     {
         $this->sousrubriques = new ArrayCollection();
@@ -89,6 +92,28 @@ class Rubrique
                 $sousrubrique->setRubrique(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoto(): ?BanquePhoto
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?BanquePhoto $photo): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($photo === null && $this->photo !== null) {
+            $this->photo->setIdRubrique(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($photo !== null && $photo->getIdRubrique() !== $this) {
+            $photo->setIdRubrique($this);
+        }
+
+        $this->photo = $photo;
 
         return $this;
     }

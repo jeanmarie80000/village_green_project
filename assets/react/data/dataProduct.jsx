@@ -1,30 +1,33 @@
 import React, {useEffect, useState, createContext, useContext} from "react";
 import axios from "axios";
+import Hello from "../controllers/Hello";
+import { object } from "prop-types";
 
 export default function ProductList() {
 
-    const [data, setData] = useState([]);
+    const [array, setArray] = useState([]);
     // const context = createContext(setData);
+    const url = 'https://127.0.0.1:8000/api/products';
     
     useEffect(() => {
-        axios.get('https://127.0.0.1:8000/api/products')
-            .then( res => 
-                // setData(res.data)
-                console.log(res.data)
-                )
-                .catch(error => console.log(error));
-            }, []);
+        axios.get(url)
+            .then( (res) =>  {
+                setArray(res.data);
+                // console.log(res.data);
+                })
+                .catch(error =>
+                    console.log(error)
+                    );
+            }, []
+        );
+
+        // const val = Object.values(array);
+        console.log(array);
         
-            
         return (
             <div>
-                <h3>Liste des produits (React, temporaire)</h3>
+                <Hello />
                 <ul>
-                    {
-                        data.map( (product, index) =>
-                            <li key={index}>{product.name}</li>
-                        )
-                    }
                 </ul>
             </div>
         )
