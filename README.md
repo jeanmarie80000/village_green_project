@@ -5,3 +5,4 @@ Todo
 - Entity Order
 - Finish Cart
 - Security check
+- React integration
