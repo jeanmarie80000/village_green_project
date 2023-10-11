@@ -1,3 +1,61 @@
 body {
     background-color: white;
 }
+
+.page-container {
+    display: block;
+    min-height: 100%;
+}
+
+.content-wrap {
+    padding-bottom: 2.5rem;
+    min-height: 100vh;
+}
+
+.footer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
+    background-color: rgb(34, 110, 168);
+}
+
+.linkFooter {
+    text-decoration: none;
+    color: rgb(152, 255, 152);
+}
+
+.card {
+    border: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.catTitle {
+    font-style: italic;
+    text-decoration: none;
+    margin: 1.5rem;
+}
+
+.imgCat {
+    display: flex;
+    border-radius: 5px;
+}
+
+.imgTitle {
+    margin: 1rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.imgTitle:hover {
+    color: rgb(0, 210, 20);
+}
+
+.productTitle {
+    font-size: medium;
+    font-style: italic;
+}

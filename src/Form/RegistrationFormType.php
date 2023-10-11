@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 2,
                         'minMessage' => 'Le nom doit contenir au moins {{ limit }} lettres',
-                        'max' => 50,
+                        'max' => 30,
                     ]),
                 ],
             ])
@@ -54,7 +54,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 2,
                         'minMessage' => 'Le prénom doit contenir au moins {{ limit }} lettres',
-                        'max' => 50,
+                        'max' => 30,
                     ]),
                 ],
             ])
@@ -107,8 +107,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
+                        'max' => 255,
                     ]),
                 ],
             ])
@@ -124,7 +123,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 10,
                         'minMessage' => 'Le nom doit contenir au moins {{ limit }} lettres',
-                        'max' => 200,
+                        'max' => 255,
                     ]),
                 ],
             ])
@@ -161,7 +160,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 10,
                         'minMessage' => 'L\'adresse doit contenir au moins {{ limit }} lettres',
-                        'max' => 200,
+                        'max' => 255,
                     ]),
                 ],
             ])
@@ -181,7 +180,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 5,
                         'minMessage' => 'Le code postal ne contient que cinq chiffres',
-                        'max' => 5,
+                        'max' => 6,
                     ]),
                 ],
             ])

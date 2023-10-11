@@ -9,6 +9,7 @@ use App\Entity\Product;
 use App\Entity\Rubrique;
 use App\Entity\BanquePhoto;
 use App\Entity\Sousrubrique;
+use App\Entity\Supplier;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -64,6 +65,21 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+        for($i=0; $i < 10; $i++){
+            
+            $supplier = new Supplier();
+            
+            $supplier
+                ->setSurname($this->faker->name())
+                ->setFirstname($this->faker->name())
+                ->setEmail($this->faker->email())
+
+                ->setAddress($this->faker->address())
+                ->setPostCode($this->faker->postcode());
+
+            $manager->persist($supplier);
+        }
+
         //Fixtures for Rubrique, SousRubrique, Product et Photo
         for ($i = 1; $i <= 4; $i++) {
             $rubrique = new Rubrique();
@@ -72,8 +88,6 @@ class AppFixtures extends Fixture
                 ->setCodeRubrique($this->faker->words(1, true));
     
             $manager->persist($rubrique);
-    
-            $manager->flush();
 
             for ($j = 1; $j <= mt_rand(2, 5); $j++) {
 
@@ -84,10 +98,8 @@ class AppFixtures extends Fixture
                     ->setRubrique($rubrique);
         
                 $manager->persist($sousrubrique);
-        
-                $manager->flush();
 
-                for ($k = 1; $k <= mt_rand(2, 10); $k++) {
+                for ($k = 1; $k <= mt_rand(5, 18); $k++) {
                     $product = new Product();
                     $product
                         ->setName('product # '.$i . '-' .$j. '-' .$k)
@@ -98,7 +110,6 @@ class AppFixtures extends Fixture
                         ->setSousrubrique($sousrubrique);
             
                     $manager->persist($product);
-                    $manager->flush();
 
                     for ($l = 1; $l <= 2; $l++) {
 
@@ -112,11 +123,13 @@ class AppFixtures extends Fixture
                         $photo->setIdProduct($product);
                         
                         $manager->persist($photo);
-                        $manager->flush();
                     }
                 }
             }
         }
+
+        
+        $manager->flush();
 
     }
 }

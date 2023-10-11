@@ -1,14 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sous-Rubrique{% endblock %}
+{% block title %}Village Green - Sous-Rubrique{% endblock %}
 
 {% block body %}
 
-    <div class='d-flex m-4'>
-    </div>
-
     <div class="d-flex justify-content-center">
-        <h2 class="mt-5">Sous-Rubriques</h2>
+        <h1 class="catTitle mt-4">Sous-Rubriques</h1>
     </div>
 
     <div class="d-flex container justify-content-center">
@@ -16,11 +13,11 @@
 
             {# sr mean sousrubrique #}
             {% for srs in sr.sousrubriques %}
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <a href="{{ path('app_product_index', { sousrubrique: srs.id }) }}"  class="card m-2" style='width: 25rem;'>
+                    <div class="col-6 col-lg-4">
+                        <a href="{{ path('app_product_index', { sousrubrique: srs.id }) }}"  class="card m-2 imgTitle">
                             <div>
-                                <img src="{{ asset('upload/product/500x350.jpeg') }}" class="img-fluid" alt="img_test">
-                                <h4 class="d-flex card-title justify-content-center">{{ srs.NomSousrubrique }}</h4>
+                                <img src="{{ asset('upload/product/600x350.jpeg') }}" class="img-fluid imgCat" alt="img_test">
+                                <h4 class="d-flex card-title justify-content-center imgTitle">{{ srs.NomSousrubrique }}</h4>
                             </div>
                         </a>
                     </div>

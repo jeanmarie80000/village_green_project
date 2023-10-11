@@ -1,5 +1,5 @@
 {% block header %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
         
             <a class="navbar-brand" href="{{ path('app_home')}}">Village Green</a>
@@ -9,46 +9,44 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto">
+                    
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_rubrique')}}">Rubriques</a>
+                        </li>
                 
-                {% if app.user %}
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_rubrique')}}">Rubriques</a>
-                    </li>
-                {% endif %}
-            
-            </ul>
+                </ul>
 
-            <form class="d-flex">
-                {# <input class="form-control m-1" type="search" placeholder="Search">
-                <button class="btn btn-secondary m-1" type="submit">Search</button> #}
+                <form class="d-flex">
+                    <input class="form-control m-1" type="search" placeholder="Search">
+                    <button class="btn btn-secondary fa fa-search m-1" type="submit"></button>
 
-                {% if app.user %}
-                    <div class="nav-item">
-                        <a class="btn btn-success m-1" href="{{ path('app_logout') }}">Deconnexion</a>
-                    </div>
-                {% else %}
-                    <div class="nav-item">
-                        <a class="btn btn-success m-1" href="{{ path('app_login') }}">Connexion</a>
-                    </div>
+                    {% if app.user %}
+                        <div class="nav-item">
+                            <a class="btn btn-success m-1" href="{{ path('app_logout') }}">Deconnexion</a>
+                        </div>
+                    {% else %}
+                        <div class="nav-item">
+                            <a class="btn btn-success m-1" href="{{ path('app_login') }}">Connexion</a>
+                        </div>
+                        
+                        <div class="nav-item">
+                            <a class="btn btn-success m-1" href="{{ path('app_register') }}">S'inscrire</a>
+                        </div>
+                    {% endif %}
+                    
+
                     
                     <div class="nav-item">
-                        <a class="btn btn-success m-1" href="{{ path('app_register') }}">S'inscrire</a>
+                        <a class="btn btn-sucess m-1" href="{{ path('app_cart') }}">
+                            <i class="fa fa-shopping-cart" style='font-size:24px'></i>
+                            {# <span class='badge bg-primary badge-pill>0</span> #}
+                        </a>
                     </div>
-                {% endif %}
-                
 
-                
-                <div class="nav-item">
-                    <a class="btn btn-sucess m-1" href="{{ path('app_cart') }}">
-                        <i class="fa fa-shopping-cart" style='font-size:24px'></i>
-                        {# <span class='badge bg-primary badge-pill>0</span> #}
-                    </a>
-                </div>
+                    {# <p class="card-text">Nombre de produit(s) commandé(s) : {{ totalPro }}</p> #}
 
-                {# <p class="card-text">Nombre de produit(s) commandé(s) : {{ totalPro }}</p> #}
-
-            </form>
+                </form>
             </div>
         </div>
     </nav>

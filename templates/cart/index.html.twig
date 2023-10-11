@@ -3,31 +3,30 @@
 {% block title %}Village Green - Panier client{% endblock %}
 
 {% block body %}
-    
-    <div class='d-flex m-4'>
-    </div>
 
     {% if items|length > 0 %}
 
-        {% for item in items %}
         <div class="container">
-            <div class="mt-5">
+            <div class="mt-4">
 
                 <h3 class='d-flex justify-content-center title'>
                     Panier
                 </h3>
+                <hr>
 
-                <div class="d-flex">
-
-                    <div class="d-flex col-9">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img src="{{ asset('upload/product/250x400.jpeg') }}" class="img-fluid rounded" alt="img_test">                                
+                {% for item in items %}
+                    <div class="d-flex row align-items-center">
+                    
+                    {# layout when multiple items #}
+                    
+                        <div class="col-9 mt-4">
+                            <div class="row align-items-center">
+                                <div class="col-5">
+                                    <img src="{{ asset('upload/product/250x400.jpeg') }}" class="img-fluid rounded" alt="img_test">
                                 </div>
 
                                 {# body product #}
-                                <div class="col-10">
+                                <div class="col-7">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ item.product.name }}</h5>
                                         <hr>
@@ -37,22 +36,19 @@
                                         {# <p class="card-text">{{ item.product.dateCreate|date('Y-m-d H:i:s') }}</p> #}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                    </div>
 
-                    {# Info prix produit #}
-                    <div class="col-3 mx-2">
-                        <div class="card">
-                            <div class="m-4">
-                                <h6>Total unitaire : </h6>
+                        {# Info prix produit #}
+                        <div class="col-3">
+                            <div class="m-3">
+                                <h6>Total unitaire</h6>
                                 <p class="card-text">{{ item.product.pricePt }} €</p>
 
-                                <h6>Nombre commandé : </h6>
+                                <h6>Quantité</h6>
                                 <p class="card-text">{{ item.quantity }}</p>
 
-                                <h6>Total :</h6>
+                                <h6>Total</h6>
                                 <p class="card-text">{{ item.product.pricePt * item.quantity }} €</p>
 
                                 <a href="#" class="d-flex btn btn-danger btn-sm justify-content-center">
@@ -61,12 +57,11 @@
                             </div>
                         </div>
                     </div>
+                {% endfor %}
 
-                    </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
 
         <div class="container">
 
@@ -74,8 +69,7 @@
                     <div class="card">
                         <div class="row">
 
-                                {# todo : aligner #}
-                                <div class="m-2">
+                                <div class='mb-3'>
                                     <div class="card-body">
                                         <h5 class="card-title">Commande : </h5>
                                         <hr>

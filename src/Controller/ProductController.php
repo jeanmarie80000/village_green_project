@@ -28,7 +28,7 @@ class ProductController extends AbstractController
     {
 
         $productList = $sousrubrique->getProducts();
-        $firstResult = $productList->first();
+        // $firstResult = $productList->first();
 
         $imageExpo = $product->getBanquePhotos();
 
@@ -79,7 +79,10 @@ class ProductController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Product $product, ProductRepository $productRepository): Response
+    public function edit(
+        Request $request,
+        Product $product,
+        ProductRepository $productRepository): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);

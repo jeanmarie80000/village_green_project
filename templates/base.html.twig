@@ -30,8 +30,18 @@
             {% include '_header.html.twig' %}
         {% endblock %}
 
-        {% block body %}
-        {% endblock %}
+        <div class="page-container">
+            <div class="content-wrap">
+                {% block body %}
+                {% endblock %}
+            </div>
+
+            {% block footer %}
+                {% include '_footer.html.twig' %}
+            {% endblock %}
+        </div>
+
+
 
     </body>
 </html>
